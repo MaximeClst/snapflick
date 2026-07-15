@@ -163,11 +163,29 @@ function App() {
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center">
           <a
             href="#top"
-            className="font-display text-2xl sm:text-3xl font-bold tracking-tight leading-none"
+            className="flex items-center gap-2.5"
             aria-label="SnapFlick"
           >
-            <span className="text-ink-900">Snap</span>
-            <span className="text-gradient">Flick</span>
+            <span className="grid h-9 w-9 place-items-center rounded-xl bg-linear-to-br from-[#ef709b] to-[#eca0ff] shadow-[0_8px_18px_-6px_rgba(236,72,153,0.55)]">
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+                <path d="M12 12v9" />
+                <path d="m16 16-4-4-4 4" />
+              </svg>
+            </span>
+            <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight leading-none">
+              <span className="text-ink-900">Snap</span>
+              <span className="text-gradient">Flick</span>
+            </span>
           </a>
         </div>
       </header>
