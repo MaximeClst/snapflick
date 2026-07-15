@@ -207,12 +207,6 @@ function App() {
                     />
                   </svg>
                 </a>
-                <a
-                  href="#converter"
-                  className="inline-flex items-center gap-2 rounded-full bg-white border border-ink-200 text-ink-800 px-5 py-3 text-sm font-medium hover:border-ink-300 transition"
-                >
-                  Voir comment ça marche
-                </a>
               </div>
 
               {/* Trust strip */}
@@ -246,7 +240,7 @@ function App() {
                     <div className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
                   </div>
                   <span className="text-xs font-medium text-ink-500">
-                    snapflick.app/convert
+                    snapflick.dev/convert
                   </span>
                 </div>
 
