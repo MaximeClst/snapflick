@@ -1,6 +1,7 @@
 import { saveAs } from "file-saver";
 import ImageTracer from "imagetracerjs";
 import { useCallback, useEffect, useRef, useState } from "react";
+import AuthorPromoModal from "./components/AuthorPromoModal";
 import BudgetCopainAd from "./components/BudgetCopainAd";
 import "./index.css";
 
@@ -20,13 +21,22 @@ function App() {
   const [isDragging, setIsDragging] = useState(false);
   const [isConverting, setIsConverting] = useState(false);
   const [justConverted, setJustConverted] = useState(false);
+  const [showPromo, setShowPromo] = useState(false);
   const inputRef = useRef(null);
+  const promoShownRef = useRef(false);
 
   useEffect(() => {
     if (!justConverted) return;
     const t = setTimeout(() => setJustConverted(false), 2200);
     return () => clearTimeout(t);
   }, [justConverted]);
+
+  // Ouvre la modal "founder" une seule fois par session, juste après le téléchargement.
+  const maybeShowPromo = useCallback(() => {
+    if (promoShownRef.current) return;
+    promoShownRef.current = true;
+    setTimeout(() => setShowPromo(true), 800);
+  }, []);
 
   const handleFiles = useCallback((files) => {
     const file = files?.[0];
@@ -109,6 +119,7 @@ function App() {
               saveAs(blob, `${originalFileName}.svg`);
               setIsConverting(false);
               setJustConverted(true);
+              maybeShowPromo();
             },
             options,
           );
@@ -129,6 +140,7 @@ function App() {
       saveAs(blob, `${originalFileName}.${outputFormat}`);
       setIsConverting(false);
       setJustConverted(true);
+      maybeShowPromo();
     };
     reader.readAsDataURL(selectedFile);
   };
@@ -144,6 +156,7 @@ function App() {
       {/* Auto-promo Budget Copain */}
       <BudgetCopainAd side="left" />
       <BudgetCopainAd side="right" />
+      <AuthorPromoModal open={showPromo} onClose={() => setShowPromo(false)} />
 
       {/* Nav */}
       <header className="sticky top-0 z-40 backdrop-blur-md bg-white/70 border-b border-ink-200/60">
