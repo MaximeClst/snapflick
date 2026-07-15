@@ -1,6 +1,7 @@
 import { saveAs } from "file-saver";
 import ImageTracer from "imagetracerjs";
 import { useCallback, useEffect, useRef, useState } from "react";
+import BudgetCopainAd from "./components/BudgetCopainAd";
 import "./index.css";
 
 const FORMATS = [
@@ -140,69 +141,20 @@ function App() {
 
   return (
     <div className="min-h-screen bg-mesh text-ink-900">
+      {/* Auto-promo Budget Copain */}
+      <BudgetCopainAd side="left" />
+      <BudgetCopainAd side="right" />
+
       {/* Nav */}
       <header className="sticky top-0 z-40 backdrop-blur-md bg-white/70 border-b border-ink-200/60">
-        <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-2 group">
-            <span className="relative h-8 w-8 rounded-xl bg-linear-to-br from-brand-600 via-brand-500 to-accent-500 grid place-items-center shadow-md">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                className="h-4 w-4 text-white"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 7h4l2-3h4l2 3h4v12H4V7Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                />
-                <circle
-                  cx="12"
-                  cy="13"
-                  r="3.5"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                />
-              </svg>
-            </span>
-            <span className="font-semibold tracking-tight text-ink-900">
-              SnapFlick
-            </span>
-          </a>
-          <nav className="hidden sm:flex items-center gap-7 text-sm text-ink-600">
-            <a
-              href="#features"
-              className="hover:text-ink-900 transition-colors"
-            >
-              Fonctionnalités
-            </a>
-            <a href="#how" className="hover:text-ink-900 transition-colors">
-              Comment ça marche
-            </a>
-            <a href="#faq" className="hover:text-ink-900 transition-colors">
-              FAQ
-            </a>
-          </nav>
+        <div className="mx-auto max-w-6xl px-6 h-16 flex items-center">
           <a
-            href="#converter"
-            className="inline-flex items-center gap-1.5 rounded-full bg-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-700 transition-colors"
+            href="#top"
+            className="font-display text-2xl sm:text-3xl font-bold tracking-tight leading-none"
+            aria-label="SnapFlick"
           >
-            Convertir
-            <svg
-              viewBox="0 0 20 20"
-              className="h-3.5 w-3.5"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M5 10h10M11 6l4 4-4 4"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <span className="text-ink-900">Snap</span>
+            <span className="text-gradient">Flick</span>
           </a>
         </div>
       </header>
@@ -213,7 +165,7 @@ function App() {
           className="absolute inset-0 bg-grid pointer-events-none"
           aria-hidden="true"
         />
-        <section className="relative mx-auto max-w-6xl px-6 pt-14 pb-10 sm:pt-20 sm:pb-16">
+        <section className="relative mx-auto max-w-6xl px-6 py-14 sm:py-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
             {/* Left: Pitch */}
             <div>
@@ -256,7 +208,7 @@ function App() {
                   </svg>
                 </a>
                 <a
-                  href="#how"
+                  href="#converter"
                   className="inline-flex items-center gap-2 rounded-full bg-white border border-ink-200 text-ink-800 px-5 py-3 text-sm font-medium hover:border-ink-300 transition"
                 >
                   Voir comment ça marche
@@ -509,402 +461,25 @@ function App() {
               </div>
             </div>
           </div>
-
-          {/* Logo / press marquee */}
-          <div className="mt-16 sm:mt-20">
-            <p className="text-center text-xs font-medium uppercase tracking-widest text-ink-500 mb-6">
-              Adopté par les créateurs, freelances et équipes produit
-            </p>
-            <div className="relative overflow-hidden">
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-linear-to-r from-white to-transparent z-10" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-linear-to-l from-white to-transparent z-10" />
-              <div className="flex gap-12 whitespace-nowrap animate-marquee">
-                {Array.from({ length: 2 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-12 text-ink-400 font-semibold tracking-tight text-lg shrink-0"
-                  >
-                    <span>◆ Northwind</span>
-                    <span>⬡ Lumen Studio</span>
-                    <span>✱ Atelier 42</span>
-                    <span>◐ Pixelhaus</span>
-                    <span>▲ Forma</span>
-                    <span>◇ Indie Loop</span>
-                    <span>⬢ Maven</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features */}
-        <section
-          id="features"
-          className="relative mx-auto max-w-6xl px-6 py-20"
-        >
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold text-brand-700 mb-3">
-              Pourquoi SnapFlick
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              Tout ce qu'il faut, rien de superflu.
-            </h2>
-            <p className="mt-4 text-ink-600 text-lg">
-              Pensé pour les vraies vies créatives : rapide, privé, et sans
-              friction. Aucune création de compte, aucun abonnement.
-            </p>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              {
-                title: "100% privé",
-                desc: "Vos images restent sur votre appareil. Aucun upload, aucun tracking.",
-                icon: (
-                  <path
-                    d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                    fill="none"
-                  />
-                ),
-              },
-              {
-                title: "Rapide comme l'éclair",
-                desc: "Conversion locale instantanée — fini les files d'attente serveur.",
-                icon: (
-                  <path
-                    d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                    fill="none"
-                  />
-                ),
-              },
-              {
-                title: "6 formats au choix",
-                desc: "PNG, JPEG, WebP, GIF, TIFF et SVG vectoriel — un seul outil pour tout.",
-                icon: (
-                  <path
-                    d="M4 7h16M4 12h16M4 17h10"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                ),
-              },
-              {
-                title: "Sans filigrane",
-                desc: "Récupérez vos fichiers propres, prêts à l'emploi, en haute qualité.",
-                icon: (
-                  <path
-                    d="M5 12l5 5 9-12"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    fill="none"
-                  />
-                ),
-              },
-              {
-                title: "Compatible partout",
-                desc: "Fonctionne dans n'importe quel navigateur moderne, mobile inclus.",
-                icon: (
-                  <path
-                    d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zm0 0h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    fill="none"
-                  />
-                ),
-              },
-              {
-                title: "Gratuit, vraiment.",
-                desc: "Sans inscription, sans limite cachée, sans email demandé.",
-                icon: (
-                  <path
-                    d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                ),
-              },
-            ].map((f) => (
-              <article
-                key={f.title}
-                className="group rounded-2xl bg-white p-6 ring-soft hover:-translate-y-0.5 hover:shadow-lg transition"
-              >
-                <div className="h-11 w-11 rounded-xl bg-linear-to-br from-brand-100 to-accent-100 text-brand-700 grid place-items-center mb-4">
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5"
-                    aria-hidden="true"
-                  >
-                    {f.icon}
-                  </svg>
-                </div>
-                <h3 className="font-semibold text-ink-900">{f.title}</h3>
-                <p className="mt-1.5 text-sm text-ink-600 leading-relaxed">
-                  {f.desc}
-                </p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* How it works */}
-        <section id="how" className="relative mx-auto max-w-6xl px-6 py-20">
-          <div className="rounded-3xl bg-linear-to-br from-ink-900 via-ink-800 to-brand-900 text-white p-8 sm:p-12 overflow-hidden relative">
-            <div
-              className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-accent-500/30 blur-3xl"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-brand-500/30 blur-3xl"
-              aria-hidden="true"
-            />
-            <div className="relative max-w-2xl">
-              <p className="text-sm font-semibold text-brand-300 mb-3">
-                3 étapes
-              </p>
-              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-                D'une image source au fichier parfait.
-              </h2>
-              <p className="mt-3 text-ink-300 text-lg">
-                Pas de tutoriel, pas de paramètres obscurs. Trois clics, c'est
-                tout.
-              </p>
-            </div>
-
-            <ol className="relative mt-10 grid md:grid-cols-3 gap-5">
-              {[
-                {
-                  n: "01",
-                  t: "Déposez",
-                  d: "Glissez votre image, ou cliquez pour la sélectionner.",
-                },
-                {
-                  n: "02",
-                  t: "Choisissez",
-                  d: "Sélectionnez le format de sortie idéal (PNG, WebP, SVG…).",
-                },
-                {
-                  n: "03",
-                  t: "Téléchargez",
-                  d: "On convertit en local et le fichier arrive directement.",
-                },
-              ].map((s) => (
-                <li
-                  key={s.n}
-                  className="rounded-2xl bg-white/5 backdrop-blur ring-1 ring-white/10 p-6"
-                >
-                  <div className="text-sm font-semibold text-brand-300">
-                    {s.n}
-                  </div>
-                  <div className="mt-3 text-xl font-semibold">{s.t}</div>
-                  <p className="mt-1.5 text-sm text-ink-300 leading-relaxed">
-                    {s.d}
-                  </p>
-                </li>
-              ))}
-            </ol>
-
-            <div className="relative mt-10">
-              <a
-                href="#converter"
-                className="inline-flex items-center gap-2 rounded-full bg-white text-ink-900 px-6 py-3 text-sm font-semibold hover:bg-ink-100 transition"
-              >
-                Essayer maintenant — c'est gratuit
-                <svg
-                  viewBox="0 0 20 20"
-                  className="h-4 w-4"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M5 10h10M11 6l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <section className="relative mx-auto max-w-6xl px-6 py-20">
-          <div className="max-w-2xl mb-10">
-            <p className="text-sm font-semibold text-brand-700 mb-3">
-              Ils l'utilisent au quotidien
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              Aimé par les créateurs exigeants.
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {[
-              {
-                q: "Le seul convertisseur que j'ai en favoris. Rapide, propre, sans pub.",
-                n: "Léa M.",
-                r: "Designer produit",
-              },
-              {
-                q: "Enfin un outil qui ne m'oblige pas à créer un compte pour 3 PNG.",
-                n: "Karim B.",
-                r: "Développeur freelance",
-              },
-              {
-                q: "Le fait que tout se passe en local me rassure pour les visuels clients.",
-                n: "Sophie D.",
-                r: "Directrice artistique",
-              },
-            ].map((t) => (
-              <figure key={t.n} className="rounded-2xl bg-white p-6 ring-soft">
-                <div
-                  className="flex gap-0.5 text-amber-400 mb-3"
-                  aria-label="5 sur 5"
-                >
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <svg
-                      key={i}
-                      viewBox="0 0 20 20"
-                      className="h-4 w-4 fill-current"
-                      aria-hidden="true"
-                    >
-                      <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.2 1 5.8L10 14.9 4.8 17.7l1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
-                    </svg>
-                  ))}
-                </div>
-                <blockquote className="text-ink-800 leading-relaxed">
-                  "{t.q}"
-                </blockquote>
-                <figcaption className="mt-4 text-sm">
-                  <div className="font-semibold text-ink-900">{t.n}</div>
-                  <div className="text-ink-500">{t.r}</div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section id="faq" className="relative mx-auto max-w-3xl px-6 py-20">
-          <div className="text-center mb-10">
-            <p className="text-sm font-semibold text-brand-700 mb-3">FAQ</p>
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              Vos questions, nos réponses.
-            </h2>
-          </div>
-          <div className="space-y-3">
-            {[
-              {
-                q: "Mes images sont-elles vraiment privées ?",
-                a: "Oui. Tout se passe dans votre navigateur — aucune image n'est envoyée sur un serveur. Vous pouvez même couper le Wi-Fi avant de convertir.",
-              },
-              {
-                q: "Y a-t-il une limite de taille ou de nombre ?",
-                a: "Pas de quota artificiel. La limite dépend simplement de la mémoire de votre appareil (en général jusqu'à ~25 Mo sans problème).",
-              },
-              {
-                q: "Le format SVG, ça fonctionne comment ?",
-                a: "SnapFlick vectorise vos images bitmap en SVG (idéal pour des logos ou pictos simples). Pour des photos complexes, préférez WebP ou PNG.",
-              },
-              {
-                q: "Combien ça coûte ?",
-                a: "Rien. Pas d'inscription, pas d'abonnement, pas de version « premium » cachée.",
-              },
-            ].map((item) => (
-              <details
-                key={item.q}
-                className="group rounded-2xl bg-white ring-soft p-5 open:shadow-md transition"
-              >
-                <summary className="cursor-pointer list-none flex items-center justify-between gap-4">
-                  <span className="font-medium text-ink-900">{item.q}</span>
-                  <span className="h-7 w-7 rounded-full bg-ink-100 grid place-items-center text-ink-600 transition group-open:rotate-45 group-open:bg-brand-100 group-open:text-brand-700">
-                    <svg
-                      viewBox="0 0 20 20"
-                      className="h-3.5 w-3.5"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M10 4v12M4 10h12"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-                <p className="mt-3 text-sm text-ink-600 leading-relaxed">
-                  {item.a}
-                </p>
-              </details>
-            ))}
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="relative mx-auto max-w-6xl px-6 pb-24">
-          <div className="rounded-3xl bg-linear-to-br from-brand-600 via-brand-500 to-accent-500 text-white p-10 sm:p-14 text-center relative overflow-hidden">
-            <div
-              className="absolute inset-0 bg-grid opacity-30"
-              aria-hidden="true"
-            />
-            <div className="relative">
-              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight max-w-2xl mx-auto">
-                Prêt à convertir votre première image en moins de 5 secondes ?
-              </h2>
-              <p className="mt-4 text-white/90 max-w-xl mx-auto">
-                Sans inscription, sans email, sans filigrane. Juste un fichier
-                propre, livré directement.
-              </p>
-              <a
-                href="#converter"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-white text-ink-900 px-7 py-3.5 text-sm font-semibold hover:bg-ink-100 transition"
-              >
-                Lancer la conversion
-                <svg
-                  viewBox="0 0 20 20"
-                  className="h-4 w-4"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M5 10h10M11 6l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-ink-200/60 bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-ink-500">
-          <div className="flex items-center gap-2">
-            <span
-              className="h-6 w-6 rounded-lg bg-linear-to-br from-brand-600 to-accent-500"
-              aria-hidden="true"
-            />
-            <span className="text-ink-700 font-medium">SnapFlick</span>
-            <span>· Convertisseur d'images privé</span>
-          </div>
-          <div>© {new Date().getFullYear()} — Fait avec soin.</div>
+      <footer className="relative border-t border-ink-200/60 bg-white/60 backdrop-blur-sm">
+        <div className="mx-auto max-w-6xl px-6 py-6 text-center text-sm text-ink-500">
+          Made with{" "}
+          <span className="text-accent-500" aria-label="amour">
+            ♥
+          </span>{" "}
+          by{" "}
+          <a
+            href="https://code-celeste.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-ink-800 underline-offset-4 hover:text-brand-700 hover:underline transition-colors"
+          >
+            Code Celeste
+          </a>
         </div>
       </footer>
     </div>
