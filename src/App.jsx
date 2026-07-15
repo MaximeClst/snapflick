@@ -140,7 +140,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-mesh text-ink-900">
+    <div className="min-h-screen flex flex-col bg-mesh text-ink-900">
       {/* Auto-promo Budget Copain */}
       <BudgetCopainAd side="left" />
       <BudgetCopainAd side="right" />
@@ -160,7 +160,7 @@ function App() {
       </header>
 
       {/* Hero + Converter */}
-      <main id="top" className="relative">
+      <main id="top" className="relative flex-1">
         <div
           className="absolute inset-0 bg-grid pointer-events-none"
           aria-hidden="true"
